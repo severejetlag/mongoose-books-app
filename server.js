@@ -5,7 +5,7 @@
 /////////////////////////////
 //  SETUP and CONFIGURATION
 /////////////////////////////
-
+var db = require('./models')
 //require express in our app
 var express = require('express'),
   bodyParser = require('body-parser');
@@ -73,9 +73,12 @@ app.get('/', function (req, res) {
 // get all books
 app.get('/api/books', function (req, res) {
   // send all books as JSON response
-  console.log('books index');
-  res.json(books);
+  db.Book.find(function(err, books){
+    if (err) { return console.log("index error: " + err); }
+    res.json(books);
+  });
 });
+
 
 // get one book
 app.get('/api/books/:id', function (req, res) {
