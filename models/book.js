@@ -1,6 +1,10 @@
 // book.js
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+// models/book.js
+var CharacterSchema = new Schema({
+  name: String
+});
 
 var BookSchema = new Schema({
      title: String,
@@ -17,7 +21,3 @@ var BookSchema = new Schema({
 var Book = mongoose.model('Book', BookSchema);
 module.exports = Book;
 
-// models/book.js
-var CharacterSchema = new Schema({
-  name: String
-});
